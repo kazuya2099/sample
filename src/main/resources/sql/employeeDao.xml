@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.EmployeeDao">
+
+	<resultMap id="employeeMap" type="com.example.entity.Employee">
+		<result property="employeeCode" column="employee_cd" />
+	</resultMap>
+	
+	<select id="selectEmployeeById" parameterType="java.lang.String" resultMap="employeeMap">
+		select
+			employee_cd,
+			sei,
+			mei,
+			sei_kana,
+			mei_kana,
+			zip1,
+			zip2,
+			address_prefecture,
+			address_city,
+			address_ooaza,
+			address_aza,
+			address_other,
+			tel1,
+			tel2,
+			tel3,
+			mobile_tel1,
+			mobile_tel2,
+			mobile_tel3,
+			join_date,
+			email,
+			password
+		from
+			m_employee
+		where
+			employee_cd = #{employeeCode}
+			and delete_flag = '0'
+	</select>
+</mapper>

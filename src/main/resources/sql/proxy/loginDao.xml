@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.LoginDao">
+
+	<update id="updateLogin" parameterType="com.example.entity.Login">
+		UPDATE
+			M_EMPLOYEE
+		SET
+			LOGIN_FAILED_COUNT = #{loginFailedCount},
+			<if test="loginLastDate != null">
+			LOGIN_LAST_DATE = #{loginLastDate},
+			</if>
+			LOGIN_STATUS = #{loginStatus},
+			UPDATE_DATE = #{updateDate},
+			UPDATE_USER = #{updateUser}
+		WHERE
+			ID = #{employeeId}
+			AND DELETE_FLAG = '0'
+	</update>
+</mapper>
